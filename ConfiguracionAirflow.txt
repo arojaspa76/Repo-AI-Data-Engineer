@@ -1,0 +1,48 @@
+#  Configuracion de la variable AIRFLOW_HOME dentro de la activacion del ambiente virtual
+export AIRFLOW_HOME="/home/arojaspa/cursobsg/codigo/etl-ai-lab/airflow"
+
+# Revisar que procesos estan activos usando la aplicacion airflow
+ps aux | grep -i airflow
+
+# Procedimiento para detener los procesos de airflow
+pkill -f "airflow webserver" || true
+pkill -f "airflow scheduler" || true
+
+# Para obtener la base de datos con la que se esta actualizanco airflow
+airflow config get-value database sql_alchemy_conn
+
+# Instalacion de Airflow
+pip install "apache-airflow==2.10.1" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.10.1/constraints-3.12.txt"
+pip install "apache-airflow-providers-common-sql" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.10.1/constraints-3.12.txt"
+pip install "apache-airflow-providers-http" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.10.1/constraints-3.12.txt"
+pip install "apache-airflow-providers-apache-spark" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.10.1/constraints-3.12.txt"
+pip install "pyspark==3.5.2" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.10.1/constraints-3.12.txt"
+pip install "pyspark==3.5.2" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.10.1/constraints-3.12.txt"
+airflow.providers.apache.spark.operators.spark_submit
+
+# Informacion de Airflow
+airflow info
+
+# Configuracion de permisos
+ls -l /home/arojaspa/cursobsg/codigo/etl-ai-lab/airflow/dags/etl_pipeline_demo.py
+chmod 644 /home/arojaspa/cursobsg/codigo/etl-ai-lab/airflow/dags/etl_pipeline_demo.py
+chmod -R 755 /home/arojaspa/cursobsg/codigo/etl-ai-lab/airflow
+
+# Crear configuracion por default
+airflow connections add spark_default \
+  --conn-type spark \
+  --conn-host local \
+  --conn-extra '{"master":"local[*]","deploy_mode":"client"}'
+
+# Verificación rápida:
+  airflow info | grep -E "AIRFLOW_HOME|dags_folder"
+
+# Esperado:
+# AIRFLOW_HOME: /home/arojaspa/cursobsg/codigo/etl-ai-lab/airflow
+# dags_folder:  /home/arojaspa/cursobsg/codigo/etl-ai-lab/airflow/dags
+
+
+USA        |3613.5287151394423|
+USA        |3619.5048107569723
+
+
