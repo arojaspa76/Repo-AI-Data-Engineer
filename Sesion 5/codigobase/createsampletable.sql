@@ -7,12 +7,12 @@ CREATE EXTERNAL TABLE carros_usados (year INT,modelo STRING,precio INT,millaje I
 --CREATE TABLE carros_usados_acid STORED AS ORC AS SELECT * FROM carros_usados_external;
 
 -- Base de datos
-CREATE DATABASE IF NOT EXISTS IEBSchoolTesisMaestria 
+CREATE DATABASE IF NOT EXISTS CURSOETLWORKLOADAI
 COMMENT 'This is an external database' 
-LOCATION '/tesismaestria/database/IEBSchoolTesisMaestria';
+LOCATION '/cursobsg/database/cursoetlworkloadai';
 
 -- Tablas
-CREATE EXTERNAL TABLE eventosdetectadosnvidia (
+CREATE EXTERNAL TABLE eventosdetectados (
     dispositivo STRING, 
     tipoinfraccion STRING, 
     nombreimagencapturada STRING, 
@@ -22,4 +22,4 @@ CREATE EXTERNAL TABLE eventosdetectadosnvidia (
     ) 
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
     STORED AS TEXTFILE 
-    LOCATION '/tesismaestria/tables/eventosdetectadosnvidia';
+    LOCATION '/cursobsg/tables/eventosdetectados';

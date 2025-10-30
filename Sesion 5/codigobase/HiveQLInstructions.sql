@@ -1,7 +1,7 @@
 -- Base de datos
-CREATE DATABASE IF NOT EXISTS tesis 
+CREATE DATABASE IF NOT EXISTS cursobsg
 COMMENT 'This is an external database' 
-LOCATION '/maestria/database/tesis';
+LOCATION '/cursobsg/database/cursobsg';
 
 -- Tablas
 CREATE EXTERNAL TABLE eventos (
@@ -14,4 +14,4 @@ CREATE EXTERNAL TABLE eventos (
     ) 
     ROW FORMAT DELIMITED FIELDS TERMINATED BY ',' 
     STORED AS TEXTFILE 
-    LOCATION '/maestria/tables/eventos';
+    LOCATION '/cursobsg/tables/eventos';
