@@ -1,0 +1,41 @@
+# Python 3.10 
+# Do not install TensorFlow or PyTorch via pip unless you're using the NVIDIA-provided .whl files for Jetson. Regular pip packages won't work with GPU on Jetson.
+# If you want both TensorFlow and PyTorch: use separate virtual environments or containers.
+# Keep your Python version at 3.10 to match the supported NVIDIA builds for Jetson.
+
+# To install opencv, you must do it locally into the venv with python 3.10
+
+# Core frameworks (GPU support)
+# TensorFlow (Jetson aarch64 build from NVIDIA)
+tensorflow[and-cuda]==2.16.2
+tensorflow-hub
+
+# Python packaging & Jupyter support
+ipykernel
+setuptools
+wheel
+
+# Core data science stack
+pandas
+numpy
+scikit-learn
+scikit-image
+matplotlib
+seaborn
+ultralytics
+
+# Model formats & runtimes
+onnx
+onnxruntime
+
+# Micrellaneus
+black
+pylint
+pytest
+tqdm
+pillow
+schedule
+pyhive
+thrift
+sasl
+thrift_sasl

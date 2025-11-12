@@ -1,0 +1,72 @@
+sudo apt install -y cmake gfortran libgtk-3-dev libjpeg-dev libpng-dev libtiff-dev libavcodec-dev libavformat-dev libswscale-dev libv4l-dev libxvidcore-dev libx264-dev libopenblas-dev libatlas-base-dev liblapack-dev libhdf5-dev gstreamer1.0-tools libqt5gui5 libqt5webkit5 libqt5test5 libqt5core5a
+
+cd ~/ && git clone https://github.com/opencv/opencv.git && git clone https://github.com/opencv/opencv_contrib.git
+
+cd ~/opencv && git checkout 4.10.0
+cd ~/opencv_contrib && git checkout 4.10.0
+cd ~/opencv && mkdir build && cd build
+
+CC=/usr/bin/gcc-12 CXX=/usr/bin/g++-12 cmake \
+  -D CMAKE_BUILD_TYPE=RELEASE \
+  -D CMAKE_INSTALL_PREFIX=$(python -c "import sys; print(sys.prefix)") \
+  -D PYTHON3_EXECUTABLE=$(which python) \
+  -D PYTHON3_LIBRARY="$PY_LIB" \
+  -D PYTHON3_INCLUDE_DIR="$PY_INC" \
+  -D BUILD_opencv_python3=ON \
+  -D BUILD_opencv_python2=OFF \
+  -D OPENCV_PYTHON3_INSTALL_PATH="$PY_SITE" \
+  -D OPENCV_EXTRA_MODULES_PATH=~/opencv_contrib/modules \
+  -D WITH_CUDA=ON \
+  -D WITH_CUDNN=ON \
+  -D ENABLE_FAST_MATH=1 \
+  -D CUDA_FAST_MATH=1 \
+  -D WITH_CUBLAS=1 \
+  -D CUDA_ARCH_BIN="8.9" \
+  -D OPENCV_DNN_CUDA=ON \
+  -D CMAKE_CUDA_HOST_COMPILER=/usr/bin/g++-12 \
+  -D WITH_NVCUVID=OFF \
+  -D WITH_NVCUVENC=OFF \
+  -D WITH_OPENMP=ON \
+  -D WITH_OPENGL=ON \
+  -D BUILD_TIFF=ON \
+  -D WITH_FFMPEG=ON \
+  -D WITH_GSTREAMER=ON \
+  -D WITH_TBB=OFF \
+  -D BUILD_TBB=OFF \
+  -D BUILD_TESTS=OFF \
+  -D WITH_V4L=ON \
+  -D WITH_LIBV4L=ON \
+  -D OPENCV_ENABLE_NONFREE=ON \
+  -D INSTALL_C_EXAMPLES=OFF \
+  -D INSTALL_PYTHON_EXAMPLES=OFF \
+  -D BUILD_NEW_PYTHON_SUPPORT=ON \
+  -D OPENCV_GENERATE_PKGCONFIG=ON \
+  -D BUILD_EXAMPLES=OFF \
+  ..
+
+
+make -j$(nproc)
+make install
+
+# Pruebas despues de la instalacion
+python -c 'import cv2; print(cv2.getBuildInformation())'
+
+python - << 'EOF'
+import sys, site, cv2
+
+print("Python exe:", sys.executable)
+print("cv2 version:", cv2.__version__)
+print("cv2 file   :", cv2.__file__)
+
+info = cv2.getBuildInformation()
+print("\n--- Resumen CUDA/Python ---")
+for line in info.splitlines():
+    if "NVIDIA CUDA:" in line or "cuDNN:" in line or "NVIDIA GPU arch:" in line or line.strip().startswith("Python 3"):
+        print(line)
+
+print("\nCUDA devices:", cv2.cuda.getCudaEnabledDeviceCount())
+if cv2.cuda.getCudaEnabledDeviceCount() > 0:
+    for i in range(cv2.cuda.getCudaEnabledDeviceCount()):
+        print(f"  Device {i}:", cv2.cuda.getDevice(i))
+EOF
+
