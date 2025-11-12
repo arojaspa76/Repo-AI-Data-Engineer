@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<configuration>
+  <property>
+    <name>hive.server2.enable.doAs</name>
+    <value>false</value>
+  </property>
+
+  
+  <property>
+    <name>hive.execution.engine</name>
+    <value>mr</value>
+  </property>
+
+  <property>
+    <name>hive.metastore.warehouse.dir</name>
+    <value>/user/hive/warehouse</value>
+  </property>
+
+  <property>
+    <name>hive.exec.scratchdir</name>
+    <value>/tmp/hive</value>
+  </property>
+
+  <property>
+    <name>hive.exec.local.scratchdir</name>
+    <value>/tmp/hive</value>
+  </property>
+
+  <!-- Configuración de HiveServer2 -->
+  <property>
+    <name>hive.server2.transport.mode</name>
+    <value>binary</value>
+  </property>
+  <property>
+    <name>hive.server2.thrift.bind.host</name>
+    <value>localhost</value>
+  </property>
+  <property>
+    <name>hive.server2.thrift.port</name>
+    <value>10000</value>
+  </property>
+  <property>
+    <name>hive.server2.authentication</name>
+    <value>NONE</value>
+  </property>
+
+</configuration>
