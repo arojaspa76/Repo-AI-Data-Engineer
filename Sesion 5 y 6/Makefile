@@ -162,7 +162,7 @@ VENV_PY := $(ENV_PATH)/bin/python
 endif
 
 # =========================
-# TARGETS
+# TARGETS o REGLAS
 # =========================
 
 .PHONY: validate

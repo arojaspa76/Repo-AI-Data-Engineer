@@ -5,37 +5,34 @@
 
 # To install opencv, you must do it locally into the venv with python 3.10
 
-# Core frameworks (GPU support)
-# TensorFlow (Jetson aarch64 build from NVIDIA)
-tensorflow[and-cuda]==2.16.2
-tensorflow-hub
-
-# Python packaging & Jupyter support
-ipykernel
-setuptools
-wheel
-
-# Core data science stack
-pandas
 numpy
-scikit-learn
-scikit-image
+pandas
 matplotlib
-seaborn
-ultralytics
-
-# Model formats & runtimes
-onnx
-onnxruntime
-
-# Micrellaneus
+ipywidgets
+ipykernel
+ipython
+scipy
+statsmodels
+opencv-python
+Pillow
+imgaug
+tensorflow
+tensorflow-hub
+datasets
+requests
+unstructured
+pdfplumber
+tqdm
+setuptools
+pytest
 black
 pylint
-pytest
-tqdm
-pillow
+jupyterthemes
+calmap
+ydata-profiling
+pyarrow
+fastparquet
 schedule
 pyhive
 thrift
-sasl
 thrift_sasl

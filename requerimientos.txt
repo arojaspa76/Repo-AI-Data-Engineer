@@ -33,3 +33,7 @@ calmap
 ydata-profiling
 pyarrow
 fastparquet
+schedule
+pyhive
+thrift
+thrift_sasl
