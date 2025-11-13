@@ -1,8 +1,8 @@
-# Repo AI Data Engineer
+# Ingeniero de Datos de IA
 
-Information about the course `Curso Procesos ETL para Workloads de AI` part of the `Programa Certified AI Data Engineer`
+Información sobre el curso `Procesos ETL para Cargas de Trabajo de IA`, que forma parte del `Programa de Certificación de Ingeniero de Datos de IA`.
 
-## To All Students
+## Para todos los estudiantes
 
  Proyecto Final – Deep Learning, Visión por Computador y Big Data (YOLO + Hive)
 
