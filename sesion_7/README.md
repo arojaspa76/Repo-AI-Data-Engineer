@@ -20,6 +20,12 @@ Please update your `Ubuntu 24.04 systems` with `Apache HDFS` & `Apache Hive` the
 4. /usr/local/hadoop/etc/hadoop/yarn-site.xml
 5. /usr/local/hive/conf/hive-site.xml
 
+### Copy .jar libraries from $HIVE_HOME to $HADOOP_HOME
+1. sudo cp $HIVE_HOME/lib/commons-collections-*.jar $HADOOP_HOME/share/hadoop/common/lib/
+2. sudo cp $HIVE_HOME/lib/commons-lang*.jar $HADOOP_HOME/share/hadoop/common/lib/
+3. sudo cp $HIVE_HOME/lib/commons-logging*.jar $HADOOP_HOME/share/hadoop/common/lib/
+
+
 ### Start process
 1. please start all hdfs & yarn: start-hdfs.sh && start-yarn.sh
 2. please start all hive services in different terminal:
