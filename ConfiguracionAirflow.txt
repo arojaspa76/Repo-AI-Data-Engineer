@@ -12,22 +12,22 @@ ps aux | grep -i airflow
 pkill -f "airflow webserver" || true
 pkill -f "airflow scheduler" || true
 
+#  Configuracion de la variable AIRFLOW_HOME dentro de la activacion del ambiente virtual
+export AIRFLOW_HOME="/home/arojaspa/cursobsg/codigo/etl-ai-lab/airflow"
+
 # Instalacion de Airflow
 pip install "apache-airflow==2.10.1" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.10.1/constraints-3.12.txt"
 pip install "apache-airflow-providers-common-sql" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.10.1/constraints-3.12.txt"
 pip install "apache-airflow-providers-http" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.10.1/constraints-3.12.txt"
 pip install "apache-airflow-providers-apache-spark" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.10.1/constraints-3.12.txt"
 pip install "pyspark==3.5.2" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.10.1/constraints-3.12.txt"
-pip install "pyspark==3.5.2" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.10.1/constraints-3.12.txt"
+
 airflow.providers.apache.spark.operators.spark_submit
 
 # Informacion de Airflow
 airflow info
 
-#  Configuracion de la variable AIRFLOW_HOME dentro de la activacion del ambiente virtual
-export AIRFLOW_HOME="/home/arojaspa/cursobsg/codigo/etl-ai-lab/airflow"
-
-# Para obtener la base de datos con la que se esta actualizanco airflow
+# Para obtener la base de datos con la que se esta actualizando airflow
 airflow config get-value database sql_alchemy_conn
 
 # Configuracion de permisos
