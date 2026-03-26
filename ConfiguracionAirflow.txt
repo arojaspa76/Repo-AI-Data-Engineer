@@ -5,18 +5,12 @@ touch etl-ai-lab/configs/{spark-defaults.conf,spark-env.sh}
 touch etl-ai-lab/docker/docker-compose.yml
 touch etl-ai-lab/README.md
 
-#  Configuracion de la variable AIRFLOW_HOME dentro de la activacion del ambiente virtual
-export AIRFLOW_HOME="/home/arojaspa/cursobsg/codigo/etl-ai-lab/airflow"
-
 # Revisar que procesos estan activos usando la aplicacion airflow
 ps aux | grep -i airflow
 
 # Procedimiento para detener los procesos de airflow
 pkill -f "airflow webserver" || true
 pkill -f "airflow scheduler" || true
-
-# Para obtener la base de datos con la que se esta actualizanco airflow
-airflow config get-value database sql_alchemy_conn
 
 # Instalacion de Airflow
 pip install "apache-airflow==2.10.1" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.10.1/constraints-3.12.txt"
@@ -29,6 +23,12 @@ airflow.providers.apache.spark.operators.spark_submit
 
 # Informacion de Airflow
 airflow info
+
+#  Configuracion de la variable AIRFLOW_HOME dentro de la activacion del ambiente virtual
+export AIRFLOW_HOME="/home/arojaspa/cursobsg/codigo/etl-ai-lab/airflow"
+
+# Para obtener la base de datos con la que se esta actualizanco airflow
+airflow config get-value database sql_alchemy_conn
 
 # Configuracion de permisos
 ls -l /home/arojaspa/cursobsg/codigo/etl-ai-lab/airflow/dags/etl_pipeline_demo.py
