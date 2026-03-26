@@ -1,3 +1,10 @@
+mkdir -p etl-ai-lab/{airflow/{dags,plugins,include,data,logs,tests},spark_jobs/utils,configs,docker,scripts}
+touch etl-ai-lab/airflow/{airflow.env,requirements.txt}
+touch etl-ai-lab/spark_jobs/transform_job.py
+touch etl-ai-lab/configs/{spark-defaults.conf,spark-env.sh}
+touch etl-ai-lab/docker/docker-compose.yml
+touch etl-ai-lab/README.md
+
 #  Configuracion de la variable AIRFLOW_HOME dentro de la activacion del ambiente virtual
 export AIRFLOW_HOME="/home/arojaspa/cursobsg/codigo/etl-ai-lab/airflow"
 
