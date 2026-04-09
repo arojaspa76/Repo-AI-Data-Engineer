@@ -44,5 +44,6 @@ start-hdfs.sh && start-yarn.sh
 cd $HIVE_HOME && hive --service hiveserver2
 ```
 ```bash
-beeline -u "jdbc:hive2://localhost:10000/default" -n suusuario
+beeline -u "jdbc:hive2://localhost:10000/default" -n suusuario o
+beeline -u "jdbc:hive2://localhost:10000/default"
 ```
