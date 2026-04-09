@@ -18,15 +18,17 @@
 
 <configuration>
   <property>
-    <name>dfs.replication</name>
-    <value>1</value>
+      <name>dfs.replication</name>
+      <value>1</value>
   </property>
+
   <property>
-    <name>dfs.namenode.name.dir</name>
-    <value>file:/usr/local/hadoop/hdfs/namenode</value>
+      <name>dfs.namenode.name.dir</name>
+      <value>file:///home/arojaspa/bigdatadl/hadoopdata/namenode</value>
   </property>
+
   <property>
-    <name>dfs.datanode.data.dir</name>
-    <value>file:/usr/local/hadoop/hdfs/datanode</value>
+      <name>dfs.datanode.data.dir</name>
+      <value>file:///home/arojaspa/bigdatadl/hadoopdata/datanode</value>
   </property>
 </configuration>
