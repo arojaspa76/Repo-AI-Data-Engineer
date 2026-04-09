@@ -12,11 +12,21 @@ ps aux | grep -i airflow
 pkill -f "airflow webserver" || true
 pkill -f "airflow scheduler" || true
 
+pkill -9 -f "airflow webserver" || true && \
+pkill -9 -f "airflow scheduler" || true && \
+pkill -9 -f "gunicorn" || true
+
 #  Configuracion de la variable AIRFLOW_HOME dentro de la activacion del ambiente virtual
 export AIRFLOW_HOME="/home/arojaspa/cursobsg/codigo/etl-ai-lab/airflow"
 
 export AIRFLOW_HOME="/home/arojaspa/cursobsgetl/codigo/etl-ai-lab/airflow"
-airflow users create --username arojaspa --firstname Andres --lastname Rojas --role Admin --email arojaspa@outlook.com --password 123.Abc*.*&$#
+airflow users create \
+  --username arojaspa \
+  --firstname Andres \
+  --lastname Rojas \
+  --role Admin \
+  --email arojaspa@outlook.com \
+  --password '123.Abc*.*&$#'
 
 # Instalacion de Airflow
 pip install "apache-airflow==2.10.1" --constraint "https://raw.githubusercontent.com/apache/airflow/constraints-2.10.1/constraints-3.12.txt"
