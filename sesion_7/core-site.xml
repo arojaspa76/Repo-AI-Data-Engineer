@@ -21,4 +21,9 @@
     <name>fs.defaultFS</name>
     <value>hdfs://localhost:9000</value>
   </property>
+
+  <property>
+    <name>hadoop.http.staticuser.user</name>
+    <value>aqui deben poner su usuario</value>
+  </property>
 </configuration>
