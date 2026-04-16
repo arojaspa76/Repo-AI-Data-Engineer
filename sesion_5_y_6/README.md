@@ -464,6 +464,11 @@ cat > /home/arojaspa/bigdata/hive/conf/hive-site.xml <<'EOF'
     <value>false</value>
   </property>
 
+  <property>
+    <name>hive.root.logger</name>
+    <value>DEBUG,console</value>
+  </property>
+
 </configuration>
 EOF
 ```
