@@ -1,13 +1,23 @@
-<?xml version="1.0"?>
 <configuration>
+
   <property>
-    <name>hive.server2.enable.doAs</name>
-    <value>false</value>
+    <name>javax.jdo.option.ConnectionURL</name>
+    <value>jdbc:derby:;databaseName=/home/arojaspa/bigdata/hive/metastore_db;create=true</value>
   </property>
 
   <property>
-    <name>hive.execution.engine</name>
-    <value>mr</value>
+    <name>javax.jdo.option.ConnectionDriverName</name>
+    <value>org.apache.derby.jdbc.EmbeddedDriver</value>
+  </property>
+
+  <property>
+    <name>javax.jdo.option.ConnectionUserName</name>
+    <value>APP</value>
+  </property>
+
+  <property>
+    <name>javax.jdo.option.ConnectionPassword</name>
+    <value>mine</value>
   </property>
 
   <property>
@@ -21,37 +31,23 @@
   </property>
 
   <property>
-    <name>hive.exec.local.scratchdir</name>
-    <value>/tmp/arojaspa</value>
-  </property>
-
-  <property>
-    <name>hive.server2.transport.mode</name>
-    <value>binary</value>
-  </property>
-
-  <property>
-    <name>hive.server2.thrift.bind.host</name>
-    <value>localhost</value>
-  </property>
-
-  <property>
     <name>hive.server2.thrift.port</name>
     <value>10000</value>
   </property>
 
   <property>
-    <name>hive.server2.authentication</name>
-    <value>NONE</value>
+    <name>hive.server2.thrift.bind.host</name>
+    <value>127.0.0.1</value>
   </property>
 
   <property>
-    <name>javax.jdo.option.ConnectionURL</name>
-    <value>jdbc:derby:;databaseName=/home/arojaspa/bigdatadl/hive/metastore_db;create=true</value>
+    <name>hive.server2.enable.doAs</name>
+    <value>false</value>
   </property>
 
   <property>
-    <name>javax.jdo.option.ConnectionDriverName</name>
-    <value>org.apache.derby.jdbc.EmbeddedDriver</value>
+    <name>hive.root.logger</name>
+    <value>DEBUG,console</value>
   </property>
+
 </configuration>
