@@ -369,7 +369,7 @@ hdfs namenode -format
 ## 8.1 Start process
 1. para iniciar hdfs & yarn: 
 ```bash
-start-hdfs.sh && start-yarn.sh
+start-dfs.sh && start-yarn.sh
 ```
 
 Validar:
