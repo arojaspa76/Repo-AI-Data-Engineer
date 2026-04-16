@@ -44,7 +44,86 @@ Motivo práctico:
 - Hive 4.2.x ya se mueve a Java 21, por lo que no conviene con este entorno
 
 ---
+# 0. Si existe alguna instalacion, ejecutar estos pasos previos
 
+## Primero detén todo lo que esté corriendo
+```bash
+pkill -f HiveServer2
+stop-yarn.sh
+stop-dfs.sh
+```
+
+## Luego validar
+```bash
+jps -l
+ps -ef | grep -E "HiveServer2|NameNode|DataNode|SecondaryNameNode|ResourceManager|NodeManager" | grep -v grep
+```
+
+## Si todavía quedan procesos Java de Hadoop/Hive hay que cerrarlos
+```bash
+pkill -f NameNode
+pkill -f DataNode
+pkill -f SecondaryNameNode
+pkill -f ResourceManager
+pkill -f NodeManager
+pkill -f HiveServer2
+```
+
+## borrado completo y reinstalación limpia
+```bash
+# si el directorio de trabajo era bigdatadl, en las instrucciones siguientes cambiar bigdata por bigdatadl
+rm -rf ~/bigdata/hadoop
+rm -rf ~/bigdata/hive
+rm -rf ~/bigdata/hadoopdata
+rm -rf ~/bigdata/logs
+
+#Si además quieres dejar limpio cualquier metastore o archivos de prueba:
+rm -f ~/bigdata/personas.csv
+```
+
+## Después revisar el ~/.bashrc ya que seguramente quedaron rutas viejas duplicadas
+```bash
+nano ~/.bashrc
+```
+## eliminr o comentar líneas como estas si están repetidas o apuntan a instalaciones viejas
+```bash
+# si el directorio de trabajo era bigdatadl, en las instrucciones siguientes cambiar bigdata por bigdatadl
+export HADOOP_HOME=$HOME/bigdata/hadoop
+export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+export HIVE_HOME=$HOME/bigdata/hive
+export PATH=$HIVE_HOME/bin:$PATH
+export PATH=$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$PATH
+```
+## Eliminar rutas obsoletas
+```bash
+/home/arojaspa/bigdatadl/hadoop/bin
+/home/arojaspa/bigdatadl/hadoop/sbin
+/home/arojaspa/bigdatadl/hive/bin
+/opt/spark/bin
+/opt/spark/sbin
+```
+
+## Recargar el perfil
+```bash
+source ~/.bashrc
+hash -r
+```
+
+## Validar variales de entorno
+```bash
+# si el directorio de trabajo era bigdatadl, en las instrucciones siguientes cambiar bigdata por bigdatadl
+jps -l
+ls -la ~/bigdata
+echo $HADOOP_HOME
+echo $HIVE_HOME
+echo $PATH
+which hadoop
+which hive
+which beeline
+```
+> Si hiciste borrado completo, idealmente which hadoop y which beeline no deberían apuntar a ninguna instalación previa, deberian quedar en blanco.
+
+---
 # 1. Preparación del sistema
 
 Actualizar Ubuntu e instalar dependencias básicas:
