@@ -400,7 +400,7 @@ hdfs dfs -ls /
 
 ```bash
 cd ~/bigdata
-wget https://dlcdn.apache.org/hive/hive-4.1.0/apache-hive-4.1.0-bin.tar.gz
+wget https://archive.apache.org/dist/hive/hive-4.1.0/apache-hive-4.1.0-bin.tar.gz
 tar -xzf apache-hive-4.1.0-bin.tar.gz
 mv apache-hive-4.1.0-bin hive
 source ~/.bashrc
